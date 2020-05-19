@@ -85,12 +85,20 @@ class Tokenizer(ATokenizer):
     """
 
     def __init__(self):
+        super().__init__()
         """
         Constructor. Perform any initialisation and setting of state variables that is needed.
         """
         return
 
     def tokenize(self, text):
+
+        return [Token(text, Span(s, e)) for s, e in _white_space_spans(text)]
+
         raise NotImplementedError('Default tokenizer method not implemented')
 
 
+test = Tokenizer()
+text = input("Enter text: ")
+result = test.tokenize(text)
+print(result)
